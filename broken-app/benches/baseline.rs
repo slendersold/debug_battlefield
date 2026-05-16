@@ -1,5 +1,5 @@
 use broken_app::{algo, sum_even};
-use std::time::{Duration, Instant};
+use std::time::Instant;
 
 fn time_it(label: &str, mut f: impl FnMut()) {
     let start = Instant::now();

@@ -4,10 +4,16 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+criterion = { version = "0.5", optional = true }
 
-[dev-dependencies]
-criterion = "0.5"
+[features]
+criterion-bench = ["dep:criterion"]
 
 [[bench]]
 name = "baseline"
 harness = false
+
+[[bench]]
+name = "criterion"
+harness = false
+required-features = ["criterion-bench"]

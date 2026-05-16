@@ -32,6 +32,31 @@ fn normalize_simple() {
 #[test]
 fn averages_only_positive() {
     let nums = [-5, 5, 15];
-    // Ожидается (5 + 15) / 2 = 10, но текущая реализация делит на все элементы.
     assert!((broken_app::average_positive(&nums) - 10.0).abs() < f64::EPSILON);
+}
+
+#[test]
+fn race_increment_is_correct() {
+    let total = broken_app::concurrency::race_increment(1_000, 4);
+    assert_eq!(total, 4_000);
+}
+
+#[test]
+fn regression_sum_even_empty_slice() {
+    assert_eq!(sum_even(&[]), 0);
+}
+
+#[test]
+fn regression_average_positive_empty() {
+    assert!((broken_app::average_positive(&[]) - 0.0).abs() < f64::EPSILON);
+}
+
+#[test]
+fn regression_normalize_tabs_and_newlines() {
+    assert_eq!(normalize("  Hi\tthere\n"), "hithere");
+}
+
+#[test]
+fn regression_leak_buffer_all_zeros() {
+    assert_eq!(leak_buffer(&[0, 0, 0]), 0);
 }

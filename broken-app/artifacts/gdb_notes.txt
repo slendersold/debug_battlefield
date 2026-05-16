@@ -1,0 +1,24 @@
+# Шаг 2 — отладчик (gdb/lldb) на логических багах
+
+## averages_only_positive
+
+  gdb target/debug/deps/integration-<hash>
+  break broken_app::average_positive
+  run --test averages_only_positive
+
+Наблюдение: sum считает все элементы (-5+5+15=15), делитель values.len()==3 → 5.0 вместо 10.0.
+Ожидание: только положительные (5, 15) → sum=20, len=2 → 10.0.
+
+## sums_even_numbers
+
+  break broken_app::sum_even
+  watch values[len]   # при len=4 индекс 4 — за пределами
+
+Цикл 0..=len даёт обращение за срезом; Miri/ASan ловят как UB.
+
+## race_increment (после добавления теста)
+
+Повторные запуски без синхронизации давали total < 4000 (lost updates).
+Под gdb видно конкурентные записи в static mut COUNTER.
+
+EOF

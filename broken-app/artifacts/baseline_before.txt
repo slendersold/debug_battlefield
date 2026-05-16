@@ -1,0 +1,8 @@
+# Замеры «до» оптимизации (исходный broken-app, release -O)
+# Воспроизведено отдельным бинарником с оригинальными slow_fib / slow_dedup.
+
+slow_fib(32):     ~15.9 ms   (экспоненциальная рекурсия)
+slow_dedup(10k):  ~24.5 ms   (O(n²) + sort_unstable на каждой вставке)
+sum_even(50k):    ~22 µs     (но с UB: get_unchecked за пределами среза)
+
+EOF

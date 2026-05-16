@@ -1,0 +1,17 @@
+# Шаг 1 — первый прогон cargo test (исходный broken-app, до исправлений)
+
+Падали (ожидаемо по заданию):
+  - sums_even_numbers          — UB / неверная сумма (off-by-one + get_unchecked)
+  - averages_only_positive     — логическая ошибка (деление на len всего среза)
+
+Проходили частично:
+  - counts_non_zero_bytes      — логика OK, но утечка (Valgrind)
+  - dedup_preserves_uniques, fib_small_numbers, normalize_simple — OK на части входов
+
+Не покрыты тестами до доработки:
+  - use_after_free (UB)
+  - race_increment (data race)
+  - normalize с \t/\n
+  - leak_buffer на пустом вводе
+
+EOF

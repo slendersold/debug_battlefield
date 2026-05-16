@@ -1,0 +1,11 @@
+# ./scripts/profile.sh (release demo, perf record -g)
+
+demo output: sum_even=6, fib(20)=6765, dedup=[1,2,3,4]
+samples: 26 (оптимизированный код — мало user-space сэмплов)
+
+Замечания perf:
+  - kptr_restrict: символы ядра → [unknown] во flamegraph
+  - горячие slow_fib/slow_dedup не видны (уже ~µs)
+
+Визуализация: flamegraph.svg
+Подробности: profiling_notes.txt, baseline_before.txt

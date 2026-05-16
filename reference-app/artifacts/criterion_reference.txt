@@ -1,0 +1,5 @@
+# cargo bench --bench criterion --features criterion-bench
+
+sum_even_fast   time:   [24.352 µs 24.590 µs 24.849 µs]
+fast_fib        time:   [37.479 ns 37.789 ns 38.150 ns]
+fast_dedup      time:   [261.63 µs 265.76 µs 269.85 µs]

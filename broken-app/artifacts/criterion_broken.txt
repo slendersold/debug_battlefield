@@ -1,0 +1,5 @@
+# ./scripts/bench_criterion.sh
+
+sum_even    time:   [24.981 µs 25.536 µs 26.228 µs]
+slow_fib    time:   [37.658 ns 38.004 ns 38.430 ns]
+slow_dedup  time:   [260.54 µs 263.78 µs 266.89 µs]

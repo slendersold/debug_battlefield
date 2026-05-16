@@ -1,0 +1,17 @@
+# Шаг 4 — профилирование узких мест
+
+Сценарий: cargo run --release --bin demo (50k sum_even, fib(32), dedup 10k).
+
+До оптимизации (замер отдельным бинарником с исходным algo):
+  slow_fib(32)     ~15.9 ms   ← доминирует в demo
+  slow_dedup(10k)  ~24.5 ms
+  sum_even(50k)    ~22 µs
+
+Вывод: горячие точки — algo::slow_fib, algo::slow_dedup; lib в основном корректность/UB.
+
+perf record: OK после sysctl -w kernel.perf_event_paranoid=-1
+  → artifacts/perf.data, artifacts/perf_report.txt (./scripts/profile.sh)
+На оптимизированном demo узкие места уже не видны в perf (fib/dedup ~µs);
+«до» — profiling_notes + baseline_before.txt + ручной замер ~16ms/24ms.
+
+EOF

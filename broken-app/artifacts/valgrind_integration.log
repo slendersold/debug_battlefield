@@ -1,0 +1,11 @@
+# ./scripts/valgrind.sh
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+LEAK SUMMARY:
+   definitely lost: 0 bytes in 0 blocks
+   indirectly lost: 0 bytes in 0 blocks
+   possibly lost: 48 bytes in 1 blocks  (runtime Rust test harness)
+   still reachable: 456 bytes in 1 blocks
+
+Invalid read/write: none

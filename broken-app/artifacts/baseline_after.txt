@@ -1,0 +1,11 @@
+# cargo bench --bench baseline (release, 3 прогона)
+
+sum_even: 22.312µs
+slow_fib: 200ns
+slow_dedup: 464.838µs
+sum_even: 22.352µs
+slow_fib: 151ns
+slow_dedup: 2.824117ms
+sum_even: 31.339µs
+slow_fib: 171ns
+slow_dedup: 299.236µs
